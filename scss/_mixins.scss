@@ -1,0 +1,40 @@
+@mixin button($textColor: $white-color, $backgroundColor: $secondary-color) {
+    display: inline-block;
+    width: fit-content;
+    padding: .75rem 1rem;
+    border-radius: .4rem;
+    background: $backgroundColor;
+    color: $textColor;
+    cursor: pointer;
+    transition: all .4s ease;
+    &:hover {
+        background: lighten($backgroundColor, 8%);
+        box-shadow: 0 1rem 1.6rem rgba($black-color, .15);
+    }
+}
+
+@mixin mediaQuery($size) {
+    @media screen and (max-width: #{$size}) {
+        @content
+    }
+}
+
+@mixin gradientBackground() {
+    background: linear-gradient(135deg, $primary-color, $primary-color-variant);
+    color: $white-color;
+    h1, h2, h3, h4, h5, h6 {
+        color: $white-color;
+    }
+}
+
+@mixin configSection() {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 85vw;
+    margin: {
+        block: 2rem;
+        inline: auto;
+    };
+}

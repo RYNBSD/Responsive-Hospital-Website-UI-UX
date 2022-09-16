@@ -1,0 +1,46 @@
+#services {
+    @include configSection;
+    .services__header {
+        text-align: center;
+    }
+    .services__section {
+        width: 100%;
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        article {
+            @include gradientBackground;
+            text-align: center;
+            border-radius: 1rem;
+            transform: translateY(0);
+            transition: transform .3s ease;
+            > * {
+                padding: 1rem;
+            }
+            i {
+                font-size: 2rem;
+                margin: 0 auto;
+            }
+            div {
+                margin-top: -.5rem;
+                h4 {
+                    letter-spacing: 1px;
+                    margin: 0 0 .5rem;
+                }
+                small {
+                    line-height: 1.2;
+                }                
+            }
+            &:hover {
+                transform: translateY(-1rem);
+            }
+        }
+        @include mediaQuery(1024px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include mediaQuery(600px) {
+            grid-template-columns: 1fr;
+        }
+    }
+}

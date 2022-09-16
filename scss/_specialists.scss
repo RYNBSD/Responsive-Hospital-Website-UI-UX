@@ -1,0 +1,106 @@
+#specialists {
+    @include configSection;
+    .specialists__header {
+        text-align: center;
+        margin: 2rem 0;
+    }
+    .specialists__section {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        article {
+            position: relative;
+            background-color: $white-color;
+            border-radius: 1rem;
+            overflow: hidden;
+            .specialists__section-social-media {
+                position: absolute;
+                top: 0;
+                right: 5%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 2;
+                opacity: 0;
+                transition: opacity .5s ease;
+                i {
+                    background-color: $white-color;
+                    padding: .3rem;
+                    border-radius: 50%;
+                    margin-top: 1rem;
+                }
+            }
+            .specialists__section-contact {
+                position: absolute;
+                top: 65%;
+                left: 50%;
+                background-color: $success-color;
+                padding: 1rem;
+                border: 3px solid $white-color;
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                display: grid;
+                place-items: center;
+                opacity: 0;
+                z-index: 2;
+                transition: opacity .5s ease;
+                i {
+                    font-size: 2rem;
+                    color: $white-color;
+                }
+            }
+            .specialists__section-image {
+                position: relative;
+                height: 80%;
+                width: 100%;
+                overflow: hidden;
+                &::before {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    content: '';
+                    inset: 0;
+                    border-radius: 50%;
+                    @include gradientBackground;
+                    z-index: 1;
+                    opacity: .7;
+                    transform: translateX(-100%);
+                    transition: all .5s ease;
+                }
+                img {
+                    inset: 0;
+                    border-top-left-radius: 1rem;
+                    border-top-right-radius: 1rem;
+                }                
+            }
+            &:hover .specialists__section-image::before {
+                transform: translateX(0);
+                border-radius: 0;
+                border-top-left-radius: 1rem;
+                border-top-right-radius: 1rem;
+            }
+            &:hover .specialists__section-social-media {
+                opacity: 1;
+            }
+
+            &:hover .specialists__section-contact {
+                opacity: 1;
+            }
+            .specialists__section-content {
+                text-align: center;
+                padding: .5rem;
+            }
+        }
+        @include mediaQuery(1024px) {
+            & {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @include mediaQuery(600px) {
+            & {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}

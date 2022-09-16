@@ -1,0 +1,22 @@
+//Tools - config
+@import './config';
+@import './mixins';
+
+//Web
+@import './general';
+@import './nav';
+@import './header';
+@import './services';
+@import './specialists';
+@import './testimonials';
+@import './footer';
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+::-webkit-scrollbar-track {
+    background-color: $primary-color;
+}
+::-webkit-scrollbar-thumb {
+    background-color: $secondary-color;
+}

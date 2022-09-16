@@ -1,0 +1,52 @@
+.container {
+    width: $container-lg;
+    margin: 0 auto;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+}
+
+section {
+    margin-top: 6rem;
+    > h2 {
+        text-align: center;
+    }
+    > p {
+        text-align: center;
+        width: 42%;
+        margin: .6rem auto 2.5rem;
+    }
+}
+
+.btn {
+    @include button();
+}
+
+.btn-primary {
+    @include button($white-color, $primary-color);
+}
+
+@include mediaQuery(1024px) {
+    .container {
+        width: $container-md;
+    }
+    section {
+        > p {
+            width: 55%;
+        }
+    }
+}
+
+@include mediaQuery(600px) {
+    section {
+        > p {
+            width: $container-md;
+        }
+    }
+}

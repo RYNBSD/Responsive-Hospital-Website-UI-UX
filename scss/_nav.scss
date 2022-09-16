@@ -1,0 +1,89 @@
+nav {
+    width: 100vw;
+    height: 5rem;
+    position: fixed;
+    z-index: 999;
+    display: grid;
+    place-items: center;
+    @include gradientBackground;
+    box-shadow: 0 1rem 1rem rgba($black-color, .1);
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        ul {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+        button {
+            display: none;
+        }
+        a {
+            color: $white-color;
+            font-weight: 400;
+            font-size: .9rem;
+        }
+        .nav__logo h3 {
+            color: $white-color;
+        }
+    }
+}
+
+@include mediaQuery(1024px) {
+    nav {
+        .container {
+            button {
+                display: inline-block;
+                background: transparent;
+                color: $white-color;
+                font-size: 2rem;
+                cursor: pointer;
+                &:last-child {
+                    display: none;
+                }
+            }
+            ul {
+                position: fixed;
+                right: 5%;
+                top: 5rem;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                display: none;
+                perspective: 300px;
+                li {
+                    width: 100%;
+                    opacity: 0;
+                    animation: flipNavItem .3s ease forwards;
+                    transform-origin: top;
+                    @for $i from 1 to 6 {
+                        &:nth-child(#{$i}) {
+                            animation-delay: 200ms*$i;
+                        }
+                    }
+                    @keyframes flipNavItem {
+                        from {
+                            transform: rotateX(90deg);
+                        }
+                        to {
+                            transform: translateX(0deg);
+                            opacity: 1;
+                        }
+                    }
+                    a {
+                        color: $white-color;
+                        height: 100%;
+                        display: block;
+                        padding: 1.5rem 2rem;
+                        border-radius: 0;
+                        background: linear-gradient($primary-color-variant, darken($primary-color-variant, 12%));
+                        &.btn {
+                            background: $secondary-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
